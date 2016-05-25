@@ -50,7 +50,7 @@ var files=function(){
             items.push({
               version:version,
               chapter:chapter.id,
-              line:line,
+              lines:groupedInfo.lines==undefined?[line]:groupedInfo.lines,
               path: path.join(
                 path.resolve(__dirname),
                 version,
@@ -65,7 +65,8 @@ var files=function(){
               if(found==undefined) return {found:false};
               return {
                 found:true,isrepresentative:line==found.start,
-                file:zeroFill(found.start,2)+'-'+zeroFill(found.end,2)+'.txt'
+                file:zeroFill(found.start,2)+'-'+zeroFill(found.end,2)+'.txt',
+                lines:_.range(found.start,found.end+1)
               };
           }
           function getFilename(){
@@ -85,11 +86,11 @@ var files=function(){
 //console.log("items",files);
 
 
-var readerStream=function(filename,version,chapter,line){
+var readerStream=function(filename,version,chapter,lines){
    //return fs.createReadStream(path.join(basePath,'TextNepali','01 Chapter',filename));
    var filecontent=fs.readFileSync(filename,{encoding:'utf-8'});
    var rs=new stream.Readable({objectMode:true});
-   rs.push(JSON.stringify({version:version,chapter:chapter,line:line,text:filecontent}));
+   rs.push(JSON.stringify({version:version,chapter:chapter,lines:lines,text:filecontent}));
    rs.push(null);
    return rs;
 }
@@ -108,7 +109,7 @@ var writerStream = fs.createWriteStream('output.txt',{encoding:'utf-8'});
 
 var strms = ss();
 files.forEach(function(file) {
-    strms.write(readerStream(file.path,file.version,file.chapter,file.line));
+    strms.write(readerStream(file.path,file.version,file.chapter,file.lines));
 });
 strms.end();
 
