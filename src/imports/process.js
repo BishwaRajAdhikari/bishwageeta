@@ -12,20 +12,20 @@ var chapters=[
   {id:2,lines:72,groups:[{start:42,end:43}]},
   {id:3,lines:43,groups:[]},
   {id:4,lines:42,groups:[]},
-  //{id:5,lines:29,groups:[{start:8,end:9},{start:27,end:28}]},
-  //{id:6,lines:47,groups:[{start:11,end:12},{start:13,end:14},{start:20,end:23}]},
+  {id:5,lines:29,groups:[{start:8,end:9},{start:27,end:28}]},
+  {id:6,lines:47,groups:[{start:11,end:12},{start:13,end:14},{start:20,end:23}]},
   {id:7,lines:30,groups:[]},
-  // {id:8,lines:28,groups:[{start:12,end:13}]},
+  {id:8,lines:28,groups:[{start:12,end:13}]},
   {id:9,lines:34,groups:[]},
-  // {id:10,lines:42,groups:[{start:4,end:5},{start:12,end:13}]},
-  // {id:11,lines:55,groups:[{start:6,end:7}]},
-  // {id:12,lines:20,groups:[{start:6,end:7}]},
-  // {id:13,lines:35,groups:[{start:6,end:7},{start:8,end:12}]},
-  // {id:14,lines:27,groups:[{start:6,end:7}]},
-  // {id:15,lines:20,groups:[{start:6,end:7}]},
-  // {id:16,lines:24,groups:[{start:6,end:7}]},
-  // {id:17,lines:28,groups:[{start:6,end:7}]},
-  // {id:18,lines:78,groups:[{start:6,end:7}]}
+  {id:10,lines:42,groups:[{start:4,end:5},{start:12,end:13}]},
+  {id:11,lines:55,groups:[{start:10,end:11},{start:26,end:27},{start:41,end:42}]},
+  {id:12,lines:20,groups:[{start:3,end:4},{start:6,end:7},{start:13,end:14},{start:18,end:19}]},
+  {id:13,lines:35,groups:[{start:6,end:7},{start:8,end:12}]},
+  {id:14,lines:27,groups:[{start:22,end:25}]},
+  {id:15,lines:20,groups:[{start:3,end:4}]},
+  {id:16,lines:24,groups:[{start:1,end:3},{start:13,end:15}]},
+  {id:17,lines:28,groups:[{start:5,end:6},{start:8,end:10}]},
+  {id:18,lines:78,groups:[{start:51,end:53}]}
 ];
 var files=function(){
   function zeroFill( number, width ){
