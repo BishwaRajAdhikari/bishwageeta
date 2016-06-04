@@ -5,7 +5,7 @@ var util = require('util');
 var ss = require('stream-stream');
 var _=require('lodash');
 var db=[];
-
+/*
 var types=[];
 var chapters=[
   {id:1,lines:46,groups:[{start:17,end:18},{start:32,end:35},{start:37,end:38}]},
@@ -105,7 +105,7 @@ Sanitizer.prototype._transform = function(obj, encoding, cb){
     this.push(',');
     cb();
 };
-var writerStream = fs.createWriteStream('output.txt',{encoding:'utf-8'});
+var writerStream = fs.createWriteStream('raw.txt',{encoding:'utf-8'});
 
 var strms = ss();
 files.forEach(function(file) {
@@ -116,3 +116,40 @@ strms.end();
 strms
   .pipe(new Sanitizer())
   .pipe(writerStream);
+
+*/
+/*
+  (function(){
+      var filecontent=fs.readFileSync('raw.txt',{encoding:'utf-8'});
+      if(filecontent.substring(filecontent.length-1)==','){
+        filecontent=filecontent.substring(0,filecontent.length-1);
+      }
+      fs.writeFileSync('raw.json','['+filecontent+']');
+  })();
+*/
+
+(function(){
+    var raw=JSON.parse(fs.readFileSync('raw.json',{encoding:'utf-8'}));
+    function byLines(item){
+      return item.lines[0];
+    }
+    function toChapters(result,value,key){
+      //console.log('\n------\nresult',result);
+      //console.log('value',value);
+      //console.log('key',key);
+      //(result[value.chapter] || (result[value.chapter]=[])).push({chapter:value.chapter,text:value.text});
+      if(result['chapter'+value.chapter]==undefined){
+        result['chapter'+value.chapter]={chapter:value.chapter,texts:[]};
+      }
+      var texts={};
+      texts['lines']=value.lines[0];
+      texts[value.version]=value.text;
+      result['chapter'+value.chapter].texts.push(texts);
+      return result;
+    }
+    var output=_.chain(raw)
+                    .sortBy('chapter','version',byLines)
+                    .reduce(toChapters,{})
+                    .value();
+    fs.writeFileSync('processed.json',JSON.stringify(output));
+})();
