@@ -129,6 +129,19 @@ strms
 */
 
 (function(){
+    function zeroFill( number, width ){
+      width -= number.toString().length;
+      if ( width > 0 )
+      {
+        return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+      }
+      return number.toString(); // always return a string
+    }
+    function getAudio(lines){
+      return lines.length>1
+                      ? zeroFill(lines[0],2)+'-'+zeroFill(lines[lines.length-1])+'.mp4'
+                      : zeroFill(lines[0],2)+'.mp4';
+    }
     var raw=JSON.parse(fs.readFileSync('raw.json',{encoding:'utf-8'}));
     function byLines(item){
       return item.lines[0];
@@ -138,18 +151,26 @@ strms
       //console.log('value',value);
       //console.log('key',key);
       //(result[value.chapter] || (result[value.chapter]=[])).push({chapter:value.chapter,text:value.text});
-      if(result['chapter'+value.chapter]==undefined){
-        result['chapter'+value.chapter]={chapter:value.chapter,texts:[]};
+      // if(result['chapter'+value.chapter]==undefined){
+      //   result['chapter'+value.chapter]={chapter:value.chapter,texts:[]};
+      // }
+      var chapter=_.find(result,{id:value.chapter});
+      if(chapter==undefined){
+          chapter={id:value.chapter,texts:[]};
+          result.push(chapter);
       }
-      var texts={};
-      texts['lines']=value.lines[0];
+      var texts=_.find(chapter.texts,{lines:value.lines});
+      if(texts==undefined){
+        texts={lines:value.lines};
+        chapter.texts.push(texts);
+      }
       texts[value.version]=value.text;
-      result['chapter'+value.chapter].texts.push(texts);
+      texts['audio']=getAudio(value.lines);
       return result;
     }
     var output=_.chain(raw)
                     .sortBy('chapter','version',byLines)
-                    .reduce(toChapters,{})
+                    .reduce(toChapters,[])
                     .value();
     fs.writeFileSync('processed.json',JSON.stringify(output));
 })();
