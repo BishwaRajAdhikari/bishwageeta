@@ -1,15 +1,33 @@
 var ChapterNavigation = React.createClass({
+    getInitialState: function() {
+      return {
+        current: 1
+      };
+    },
+    navigateTo: function navigateTo(newValue){
+      var _this=this;
+      console.log("ChapterNavigation navigateTo",this,this.state,newValue);
+      this.state.current=newValue;
+      this.render();
+    },
     render: function(){
       var _this=this;
+      console.log("ChapterNavigation render",this.state,_this.state);
       return (
         <div>
-          Chapter Navigation
+          <div>
+            Chapter Navigation
+            <a href="#" onClick={this.navigateTo.bind(this,1)}>1</a> |
+            <a href="#" onClick={this.navigateTo.bind(this,2)}>2</a> |
+          </div>
+          <hr/>
+          <ChapterContainer title={'Chapter '+this.state.current} id={ this.state.current }/>
         </div>
       );
     }
 });
 
-var Chapter = React.createClass({
+var ChapterContainer = React.createClass({
   mixins: [ReactFireMixin],
 
   getInitialState: function() {
@@ -19,13 +37,14 @@ var Chapter = React.createClass({
   },
 
   componentWillMount: function() {
+    console.log("ChapterContainer this.props",this.props);
     var firebaseRef = firebase.database().ref('bishwageeta/chapters/'+this.props.id+'/texts');;
     this.bindAsArray(firebaseRef, 'texts');
   },
 
   render: function() {
     var _this = this;
-    return <ChapterLines title={'Chapter '+(this.props.id+1)} texts={ this.state.texts }/>
+    return <ChapterLines title={this.props.title} texts={ this.state.texts }/>
   }
 });
 
@@ -57,10 +76,13 @@ var Book = React.createClass({
       <div>
         <h2>{this.props.title}</h2>
         <ChapterNavigation/>
-        <Chapter id={ 1 }/>
       </div>
     );
   }
 });
 
-ReactDOM.render(<Book title='Bishwa Geeta' />, document.getElementById('app'));
+var onChange = function () {
+  ReactDOM.render(<Book title='Bishwa Geeta' />, document.getElementById('app'));
+};
+
+onChange();
