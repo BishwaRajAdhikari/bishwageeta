@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactAudioPlayer from 'react-audio-player'    
 
 export default React.createClass({
   render: function() {
@@ -7,11 +8,16 @@ export default React.createClass({
       return (
         <div key={ index }>
           <blockquote className='nepali'>
-            Nepali: { item.TextNepali }
+            { item.TextNepali }
             <div className='sanskrit'>
-              Sanskrit: { item.TextSanskrit }
-            </div>
-            <cite>Audio: { item.audio }</cite>
+              { item.TextSanskrit }
+            </div>            
+            <ReactAudioPlayer
+              src= {"/src/imports/AudioNepali/1.%20Geeta%20First%20Chapter/" +item.audio}
+              autoplay="false"
+              preload='none'
+              width='50'
+            />
           </blockquote>
         </div>
       );
