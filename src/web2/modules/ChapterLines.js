@@ -19,7 +19,7 @@ export default React.createClass({
     return (
       <div className='chapterLines'>
         <div className='chapterLinesTitle'><h3>{this.props.title}</h3></div>
-        <div><iframe src="https://www.youtube.com/embed/videoseries?list=PL426831BC08A165DC" width="200" height="100" frameBorder="0"></iframe></div>
+        <div><iframe src={this.props.audio} width="200" height="100" frameBorder="0"></iframe></div>
         <div>{ this.props.texts.map(createItem) }</div>
       </div>
     );
