@@ -5,7 +5,7 @@ export default React.createClass({
   render() {
     var chapters=[];
     for(var i=0;i<=17;i++){
-      chapters.push(<li key={i}><NavLink to={'/chapters/'+i+'/Chapter'+(i+1)}>{(i+1)}</NavLink></li>);
+      chapters.push(<li key={i}><NavLink to={'/chapters/'+i+'/Chapter%20'+(i+1)}>{(i+1)}</NavLink></li>);
     }
     return (
       <div className='chapters'>

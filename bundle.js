@@ -25363,7 +25363,7 @@
 	        { key: i },
 	        _react2.default.createElement(
 	          _NavLink2.default,
-	          { to: '/chapters/' + i + '/Chapter' + (i + 1) },
+	          { to: '/chapters/' + i + '/Chapter%20' + (i + 1) },
 	          i + 1
 	        )
 	      ));
@@ -25506,7 +25506,7 @@
 	        'div',
 	        { className: 'chapterLinesTitle' },
 	        _react2.default.createElement(
-	          'h3',
+	          'h2',
 	          null,
 	          this.props.title
 	        )

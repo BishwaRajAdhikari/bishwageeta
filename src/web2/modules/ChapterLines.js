@@ -25,7 +25,7 @@ export default React.createClass({
     };
     return (
       <div className='chapterLines'>
-        <div className='chapterLinesTitle'><h3>{this.props.title}</h3></div>
+        <div className='chapterLinesTitle'><h2>{this.props.title}</h2></div>
         <div>{ this.props.texts.map(createItem) }</div>
       </div>
     );
