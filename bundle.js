@@ -25440,7 +25440,7 @@
 
 	  render: function render() {
 	    var _this = this;
-	    return _react2.default.createElement(_ChapterLines2.default, { title: this.props.params.chapterName, texts: this.state.texts, audio: "https://www.youtube.com/embed/videoseries?list=PL426831BC08A165DC&test=" + this.props.params.chapterName });
+	    return _react2.default.createElement(_ChapterLines2.default, { title: this.props.params.chapterName, chapterNumber: this.props.params.chapterIndex + 1, texts: this.state.texts, audio: "https://www.youtube.com/embed/videoseries?list=PL426831BC08A165DC&test=" + this.props.params.chapterName });
 	  }
 	});
 
@@ -25458,6 +25458,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactAudioPlayer = __webpack_require__(227);
+
+	var _reactAudioPlayer2 = _interopRequireDefault(_reactAudioPlayer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
@@ -25472,20 +25476,18 @@
 	        _react2.default.createElement(
 	          'blockquote',
 	          { className: 'nepali' },
-	          'Nepali: ',
 	          item.TextNepali,
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'sanskrit' },
-	            'Sanskrit: ',
 	            item.TextSanskrit
 	          ),
-	          _react2.default.createElement(
-	            'cite',
-	            null,
-	            'Audio: ',
-	            item.audio
-	          )
+	          _react2.default.createElement(_reactAudioPlayer2.default, {
+	            src: "/src/imports/AudioNepali/" + this.props.chapterNumber + "/" + item.audio + ".m4a",
+	            autoplay: 'false',
+	            preload: 'none',
+	            width: '50'
+	          })
 	        )
 	      );
 	    };
@@ -25514,6 +25516,12 @@
 	    );
 	  }
 	});
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports=function(e){function r(t){if(n[t])return n[t].exports;var o=n[t]={exports:{},id:t,loaded:!1};return e[t].call(o.exports,o,o.exports,r),o.loaded=!0,o.exports}var n={};return r.m=e,r.c=n,r.p="",r(0)}([function(e,r,n){"use strict";function t(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(r,"__esModule",{value:!0});var o=n(1),a=t(o),s=1e4,i=a["default"].createClass({displayName:"ReactAudioPlayer",componentDidMount:function(){var e=this,r=this.refs.audio;r.addEventListener("error",function(r){e.props.onError&&e.props.onError(r)}),r.addEventListener("canplay",function(r){e.props.onCanPlay&&e.props.onCanPlay(r)}),r.addEventListener("canplaythrough",function(r){e.props.onCanPlayThrough&&e.props.onCanPlayThrough(r)}),r.addEventListener("play",function(r){e.setListenTrack(),e.props.onPlay&&e.props.onPlay(r)}),r.addEventListener("abort",function(r){e.clearListenTrack(),e.props.onAbort&&e.props.onAbort(r)}),r.addEventListener("ended",function(r){e.clearListenTrack(),e.props.onEnd&&e.props.onEnd(r)}),r.addEventListener("pause",function(r){e.clearListenTrack(),e.props.onPause&&e.props.onPause(r)}),r.addEventListener("seeked",function(r){e.clearListenTrack(),e.props.onSeeked&&e.props.onSeeked(r)})},componentWillReceiveProps:function(e){if(e.selectedPlayerEvent){var r=this.refs.audio;r.currentTime=e.selectedPlayerEvent.playTime,r.play()}},render:function(){var e=this.props.children||a["default"].createElement("p",null,"Your browser does not support the ",a["default"].createElement("code",null,"audio")," element.");return a["default"].createElement("audio",{className:"react-audio-player",src:this.props.src,autoPlay:this.props.autoPlay,preload:this.props.preload,controls:!0,ref:"audio",onPlay:this.onPlay},e)},setListenTrack:function(e){var r=this;if(!this.listenTracker){var n=this.props.listenInterval||s;this.listenTracker=setInterval(function(){r.props.onListen(r.refs.audio.currentTime)},n)}},clearListenTrack:function(){clearInterval(this.listenTracker)}});r["default"]=i},function(e,r){e.exports=__webpack_require__(1)}]);
 
 /***/ }
 /******/ ]);
