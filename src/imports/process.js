@@ -8,7 +8,7 @@ var db=[];
 
 var types=[];
 var chapters=[
-  {id:1,lines:46,groups:[{start:17,end:18},{start:32,end:35},{start:37,end:38}]},
+  {id:1,lines:46,groups:[{start:17,end:18},{start:22,end:23},{start:32,end:35},{start:37,end:38}]},
   {id:2,lines:72,groups:[{start:42,end:43}]},
   {id:3,lines:43,groups:[]},
   {id:4,lines:42,groups:[]},
@@ -140,7 +140,7 @@ strms
     }
     function getAudio(lines){
       return lines.length>1
-                      ? zeroFill(lines[0],2)+'-'+zeroFill(lines[lines.length-1])+''
+                      ? zeroFill(lines[0],2)+'-'+zeroFill(lines[lines.length-1],2)+''
                       : zeroFill(lines[0],2)+'';
     }
     var raw=JSON.parse(fs.readFileSync('raw.json',{encoding:'utf-8'}));
@@ -173,6 +173,18 @@ strms
                     .sortBy('chapter','version',byLines)
                     .reduce(toChapters,[])
                     .value();
-    fs.writeFileSync('processed.json',JSON.stringify(output));
+    fs.writeFileSync('processed.json','{"bishwageeta":{"chapters":'+JSON.stringify(output)+'}}');
+})();
+*/
+/*
+(function(){
+    var json=JSON.parse(fs.readFileSync('processed.json',{encoding:'utf-8'}));
+    var sh='';
+    _.each(json.bishwageeta.chapters,function(chapter){
+      _.each(chapter.texts, function(texts){
+        sh+='\n'+'ffmpeg -i AudioNepaliRaw/'+chapter.id+'/'+texts.audio+'.m4a -c:a aac -b:a 40k AudioNepali/'+chapter.id+'/'+texts.audio+'.m4a';
+      });
+    });
+    fs.writeFileSync('audiocompress.sh',sh);
 })();
 */
