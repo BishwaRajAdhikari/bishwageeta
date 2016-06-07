@@ -16,7 +16,7 @@ export default React.createClass({
               src= {"/src/imports/AudioNepali/"+_this.props.chapterNumber+"/" +item.audio+".m4a"}
               autoplay="false"
               preload='none'
-              width='50'
+              width='200'
             />
           <cite>Chapter {_this.props.chapterNumber}, Line {item.audio}</cite>
           </blockquote>

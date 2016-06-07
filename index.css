@@ -45,8 +45,8 @@ div.chapterLines{
 
 
 blockquote {
-font-weight:bold;
-font-size: 20px;
+font-weight:normal;
+font-size: 35px;
 margin: 0.25em 0;
 padding: 0.25em 40px;
 line-height: 1.45;
@@ -56,7 +56,7 @@ color: #383838;
 blockquote div.sanskrit {
   font-weight:normal;
   font-style: italic;
-  font-size: 15px;
+  font-size: 20px;
   color: #a0a0a0;
 }
 blockquote:before {
