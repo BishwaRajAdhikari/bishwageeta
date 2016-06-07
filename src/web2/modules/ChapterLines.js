@@ -18,6 +18,7 @@ export default React.createClass({
               preload='none'
               width='50'
             />
+          <cite>Chapter {_this.props.chapterNumber}, Line {item.audio}</cite>
           </blockquote>
         </div>
       );
@@ -25,7 +26,6 @@ export default React.createClass({
     return (
       <div className='chapterLines'>
         <div className='chapterLinesTitle'><h3>{this.props.title}</h3></div>
-        <div><iframe src={this.props.audio} width="200" height="100" frameBorder="0"></iframe></div>
         <div>{ this.props.texts.map(createItem) }</div>
       </div>
     );
