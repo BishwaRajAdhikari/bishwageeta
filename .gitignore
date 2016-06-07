@@ -1,1 +1,4 @@
 /src/web2/node_modules
+/src/imports/processed.json
+/src/imports/raw.json
+/src/imports/raw.txt

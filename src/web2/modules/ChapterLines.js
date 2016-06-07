@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactAudioPlayer from 'react-audio-player'    
+import ReactAudioPlayer from 'react-audio-player'
 
 export default React.createClass({
   render: function() {
@@ -11,9 +11,9 @@ export default React.createClass({
             { item.TextNepali }
             <div className='sanskrit'>
               { item.TextSanskrit }
-            </div>            
+            </div>
             <ReactAudioPlayer
-              src= {"/src/imports/AudioNepali/1.%20Geeta%20First%20Chapter/" +item.audio}
+              src= {"/src/imports/AudioNepali/"+this.props.chapterNumber+"/" +item.audio+".m4a"}
               autoplay="false"
               preload='none'
               width='50'

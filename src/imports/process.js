@@ -5,7 +5,7 @@ var util = require('util');
 var ss = require('stream-stream');
 var _=require('lodash');
 var db=[];
-/*
+
 var types=[];
 var chapters=[
   {id:1,lines:46,groups:[{start:17,end:18},{start:32,end:35},{start:37,end:38}]},
@@ -27,6 +27,7 @@ var chapters=[
   {id:17,lines:28,groups:[{start:5,end:6},{start:8,end:10}]},
   {id:18,lines:78,groups:[{start:51,end:53}]}
 ];
+/*
 var files=function(){
   function zeroFill( number, width ){
     width -= number.toString().length;
@@ -116,8 +117,8 @@ strms.end();
 strms
   .pipe(new Sanitizer())
   .pipe(writerStream);
-
 */
+
 /*
   (function(){
       var filecontent=fs.readFileSync('raw.txt',{encoding:'utf-8'});
@@ -127,7 +128,7 @@ strms
       fs.writeFileSync('raw.json','['+filecontent+']');
   })();
 */
-
+/*
 (function(){
     function zeroFill( number, width ){
       width -= number.toString().length;
@@ -139,8 +140,8 @@ strms
     }
     function getAudio(lines){
       return lines.length>1
-                      ? zeroFill(lines[0],2)+'-'+zeroFill(lines[lines.length-1])+'.mp4'
-                      : zeroFill(lines[0],2)+'.mp4';
+                      ? zeroFill(lines[0],2)+'-'+zeroFill(lines[lines.length-1])+''
+                      : zeroFill(lines[0],2)+'';
     }
     var raw=JSON.parse(fs.readFileSync('raw.json',{encoding:'utf-8'}));
     function byLines(item){
@@ -174,3 +175,4 @@ strms
                     .value();
     fs.writeFileSync('processed.json',JSON.stringify(output));
 })();
+*/

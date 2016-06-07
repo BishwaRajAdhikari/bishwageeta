@@ -24,6 +24,6 @@ export default React.createClass({
 
   render: function() {
     var _this = this;
-    return <ChapterLines title={this.props.params.chapterName} texts={ this.state.texts } audio={"https://www.youtube.com/embed/videoseries?list=PL426831BC08A165DC&test="+this.props.params.chapterName}/>
+    return <ChapterLines title={this.props.params.chapterName} chapterNumber={this.props.params.chapterIndex+1} texts={ this.state.texts } audio={"https://www.youtube.com/embed/videoseries?list=PL426831BC08A165DC&test="+this.props.params.chapterName}/>
   }
 })
