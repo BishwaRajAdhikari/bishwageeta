@@ -25483,7 +25483,7 @@
 	            item.TextSanskrit
 	          ),
 	          _react2.default.createElement(_reactAudioPlayer2.default, {
-	            src: "/src/imports/AudioNepaliRaw/" + _this.props.chapterNumber + "/" + item.audio + ".m4a",
+	            src: "/src/imports/AudioNepali/" + _this.props.chapterNumber + "/" + item.audio + ".m4a",
 	            autoplay: 'false',
 	            preload: 'none',
 	            width: '50'
