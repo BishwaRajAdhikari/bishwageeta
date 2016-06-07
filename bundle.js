@@ -58,19 +58,15 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _About = __webpack_require__(222);
-
-	var _About2 = _interopRequireDefault(_About);
-
-	var _Home = __webpack_require__(223);
+	var _Home = __webpack_require__(222);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Chapters = __webpack_require__(224);
+	var _Chapters = __webpack_require__(223);
 
 	var _Chapters2 = _interopRequireDefault(_Chapters);
 
-	var _Chapter = __webpack_require__(225);
+	var _Chapter = __webpack_require__(224);
 
 	var _Chapter2 = _interopRequireDefault(_Chapter);
 
@@ -86,7 +82,7 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/chapters', component: _Chapters2.default },
-	      _react2.default.createElement(_reactRouter.Route, { path: '/chapters/:chapterIndex/:chapterName', component: _Chapter2.default })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/अध्याय/:chapterIndex/:chapterName', component: _Chapter2.default })
 	    )
 	  )
 	), document.getElementById('app'));
@@ -25228,10 +25224,6 @@
 
 	var _NavLink2 = _interopRequireDefault(_NavLink);
 
-	var _About = __webpack_require__(222);
-
-	var _About2 = _interopRequireDefault(_About);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
@@ -25243,10 +25235,9 @@
 	      _react2.default.createElement(
 	        'h1',
 	        null,
-	        'Bishwa Geeta'
+	        'विश्वगीता'
 	      ),
-	      this.props.children,
-	      _react2.default.createElement(_About2.default, null)
+	      this.props.children
 	    );
 	  }
 	});
@@ -25296,33 +25287,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
-	  displayName: 'About',
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      'About'
-	    );
-	  }
-	});
-
-/***/ },
-/* 223 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _react2.default.createClass({
 	  displayName: 'Home',
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -25334,7 +25298,7 @@
 	});
 
 /***/ },
-/* 224 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25363,7 +25327,7 @@
 	        { key: i },
 	        _react2.default.createElement(
 	          _NavLink2.default,
-	          { to: '/chapters/' + i + '/Chapter%20' + (i + 1) },
+	          { to: '/अध्याय/' + i + '/अध्याय%20' + (i + 1) },
 	          i + 1
 	        )
 	      ));
@@ -25380,7 +25344,7 @@
 	          _react2.default.createElement(
 	            'h4',
 	            null,
-	            'CHAPTERS'
+	            'अध्याय'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -25395,7 +25359,7 @@
 	});
 
 /***/ },
-/* 225 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25408,7 +25372,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ChapterLines = __webpack_require__(226);
+	var _ChapterLines = __webpack_require__(225);
 
 	var _ChapterLines2 = _interopRequireDefault(_ChapterLines);
 
@@ -25445,7 +25409,7 @@
 	});
 
 /***/ },
-/* 226 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25458,7 +25422,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAudioPlayer = __webpack_require__(227);
+	var _reactAudioPlayer = __webpack_require__(226);
 
 	var _reactAudioPlayer2 = _interopRequireDefault(_reactAudioPlayer);
 
@@ -25491,13 +25455,24 @@
 	          _react2.default.createElement(
 	            'cite',
 	            null,
-	            'Chapter ',
+	            'अध्याय ',
 	            _this.props.chapterNumber,
-	            ', Line ',
+	            ', श्लोक ',
 	            item.audio
 	          )
 	        )
 	      );
+	    };
+	    var populateItems = function populateItems(texts) {
+	      if (texts.length == 0) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          'प्रतीक्षा गर्दै...'
+	        );
+	      } else {
+	        return texts.map(createItem);
+	      }
 	    };
 	    return _react2.default.createElement(
 	      'div',
@@ -25514,14 +25489,14 @@
 	      _react2.default.createElement(
 	        'div',
 	        null,
-	        this.props.texts.map(createItem)
+	        populateItems(this.props.texts)
 	      )
 	    );
 	  }
 	});
 
 /***/ },
-/* 227 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports=function(e){function r(t){if(n[t])return n[t].exports;var o=n[t]={exports:{},id:t,loaded:!1};return e[t].call(o.exports,o,o.exports,r),o.loaded=!0,o.exports}var n={};return r.m=e,r.c=n,r.p="",r(0)}([function(e,r,n){"use strict";function t(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(r,"__esModule",{value:!0});var o=n(1),a=t(o),s=1e4,i=a["default"].createClass({displayName:"ReactAudioPlayer",componentDidMount:function(){var e=this,r=this.refs.audio;r.addEventListener("error",function(r){e.props.onError&&e.props.onError(r)}),r.addEventListener("canplay",function(r){e.props.onCanPlay&&e.props.onCanPlay(r)}),r.addEventListener("canplaythrough",function(r){e.props.onCanPlayThrough&&e.props.onCanPlayThrough(r)}),r.addEventListener("play",function(r){e.setListenTrack(),e.props.onPlay&&e.props.onPlay(r)}),r.addEventListener("abort",function(r){e.clearListenTrack(),e.props.onAbort&&e.props.onAbort(r)}),r.addEventListener("ended",function(r){e.clearListenTrack(),e.props.onEnd&&e.props.onEnd(r)}),r.addEventListener("pause",function(r){e.clearListenTrack(),e.props.onPause&&e.props.onPause(r)}),r.addEventListener("seeked",function(r){e.clearListenTrack(),e.props.onSeeked&&e.props.onSeeked(r)})},componentWillReceiveProps:function(e){if(e.selectedPlayerEvent){var r=this.refs.audio;r.currentTime=e.selectedPlayerEvent.playTime,r.play()}},render:function(){var e=this.props.children||a["default"].createElement("p",null,"Your browser does not support the ",a["default"].createElement("code",null,"audio")," element.");return a["default"].createElement("audio",{className:"react-audio-player",src:this.props.src,autoPlay:this.props.autoPlay,preload:this.props.preload,controls:!0,ref:"audio",onPlay:this.onPlay},e)},setListenTrack:function(e){var r=this;if(!this.listenTracker){var n=this.props.listenInterval||s;this.listenTracker=setInterval(function(){r.props.onListen(r.refs.audio.currentTime)},n)}},clearListenTrack:function(){clearInterval(this.listenTracker)}});r["default"]=i},function(e,r){e.exports=__webpack_require__(1)}]);

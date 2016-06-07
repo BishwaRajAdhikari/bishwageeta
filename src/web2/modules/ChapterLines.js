@@ -18,15 +18,22 @@ export default React.createClass({
               preload='none'
               width='200'
             />
-          <cite>Chapter {_this.props.chapterNumber}, Line {item.audio}</cite>
+          <cite>अध्याय {_this.props.chapterNumber}, श्लोक {item.audio}</cite>
           </blockquote>
         </div>
       );
     };
+    var populateItems=function(texts){
+        if(texts.length==0){
+            return (<div>प्रतीक्षा गर्दै...</div>);
+        }else{
+            return texts.map(createItem);       
+        }
+    }
     return (
       <div className='chapterLines'>
         <div className='chapterLinesTitle'><h2>{this.props.title}</h2></div>
-        <div>{ this.props.texts.map(createItem) }</div>
+        <div>{ populateItems(this.props.texts) }</div>
       </div>
     );
   }
