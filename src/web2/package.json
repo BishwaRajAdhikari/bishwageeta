@@ -17,7 +17,7 @@
     "react": "^0.14.7",
     "react-audio-player": "^0.1.0",
     "react-dom": "^0.14.7",
-    "react-g-analytics": "^0.2.6",
+    "react-ga": "^1.4.1",
     "react-router": "^2.0.0"
   },
   "devDependencies": {
