@@ -25487,7 +25487,15 @@
 	            autoplay: 'false',
 	            preload: 'none',
 	            width: '50'
-	          })
+	          }),
+	          _react2.default.createElement(
+	            'cite',
+	            null,
+	            'Chapter ',
+	            _this.props.chapterNumber,
+	            ', Line ',
+	            item.audio
+	          )
 	        )
 	      );
 	    };
@@ -25502,11 +25510,6 @@
 	          null,
 	          this.props.title
 	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement('iframe', { src: this.props.audio, width: '200', height: '100', frameBorder: '0' })
 	      ),
 	      _react2.default.createElement(
 	        'div',
