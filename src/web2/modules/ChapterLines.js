@@ -3,8 +3,12 @@ import ReactPlayer from 'react-player'
 
 export default React.createClass({
   render: function() {
-    function logPlay(){
-      console.log("ga",ga);        
+    function logPlay(myval){
+      ga.event({
+          category: 'AudioPlay',
+          action:myval.chapter,
+          label: myval.line
+        });        
     }
     function getconfig(){
         return {'autoplay':false};
@@ -22,10 +26,10 @@ export default React.createClass({
                 url={"/src/imports/AudioNepali/"+_this.props.chapterNumber+"/" +item.audio+".m4a"} 
                 playing={false}
                 controls={true}
-                fileConfig={{'autoplay':'false','autostart':'false','preload':'none'}}
+                fileConfig={{attributes:{preload:'none'}}}
                 width='500'
                 height='50'
-                onStart={logPlay}
+                onStart={logPlay.bind(undefined,{chapter:_this.props.chapterNumber.toString(),line:item.audio})}
             />
           <cite>अध्याय {_this.props.chapterNumber}, श्लोक {item.audio}</cite>
           </blockquote>

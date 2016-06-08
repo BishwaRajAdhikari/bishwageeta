@@ -25450,8 +25450,12 @@
 	  displayName: 'ChapterLines',
 
 	  render: function render() {
-	    function logPlay() {
-	      console.log("ga", ga);
+	    function logPlay(myval) {
+	      ga.event({
+	        category: 'AudioPlay',
+	        action: myval.chapter,
+	        label: myval.line
+	      });
 	    }
 	    function getconfig() {
 	      return { 'autoplay': false };
@@ -25474,10 +25478,10 @@
 	            url: "/src/imports/AudioNepali/" + _this.props.chapterNumber + "/" + item.audio + ".m4a",
 	            playing: false,
 	            controls: true,
-	            fileConfig: { 'autoplay': 'false', 'autostart': 'false', 'preload': 'none' },
+	            fileConfig: { attributes: { preload: 'none' } },
 	            width: '500',
 	            height: '50',
-	            onStart: logPlay
+	            onStart: logPlay.bind(undefined, { chapter: _this.props.chapterNumber.toString(), line: item.audio })
 	          }),
 	          _react2.default.createElement(
 	            'cite',
