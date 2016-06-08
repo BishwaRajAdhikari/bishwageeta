@@ -25444,14 +25444,20 @@
 
 	var _reactPlayer2 = _interopRequireDefault(_reactPlayer);
 
+	var _reactGa = __webpack_require__(244);
+
+	var _reactGa2 = _interopRequireDefault(_reactGa);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	_reactGa2.default.initialize('UA-78893348-1');
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'ChapterLines',
 
 	  render: function render() {
 	    function logPlay(myval) {
-	      ga.event({
+	      _reactGa2.default.event({
 	        category: 'AudioPlay',
 	        action: myval.chapter,
 	        label: myval.line

@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
+import ga from 'react-ga';
+ga.initialize('UA-78893348-1');
 
 export default React.createClass({
   render: function() {
