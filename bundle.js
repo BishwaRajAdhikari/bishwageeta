@@ -70,7 +70,7 @@
 
 	var _Chapter2 = _interopRequireDefault(_Chapter);
 
-	var _reactGa = __webpack_require__(244);
+	var _reactGa = __webpack_require__(243);
 
 	var _reactGa2 = _interopRequireDefault(_reactGa);
 
@@ -25244,6 +25244,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	exports.default = _react2.default.createClass({
 	  displayName: 'App',
 	  render: function render() {
@@ -25251,11 +25253,37 @@
 	      'div',
 	      null,
 	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'विश्वगीता'
+	        'div',
+	        { className: 'title' },
+	        'विश्वगीता',
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'subTitle' },
+	          'Bishwa Geeta'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'shareThis' },
+	          _react2.default.createElement(
+	            'a',
+	            _defineProperty({ target: '_blank', title: 'follow me on facebook', href: 'https://www.facebook.com/bishwa.r.adhikari' }, 'target', '_blank'),
+	            _react2.default.createElement('img', { alt: 'follow me on facebook', src: 'https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png', border: '0' })
+	          )
+	        )
 	      ),
-	      this.props.children
+	      this.props.children,
+	      _react2.default.createElement('hr', { className: 'style-two' }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'coverpage' },
+	        _react2.default.createElement('img', { src: 'coverpage.jpg' })
+	      ),
+	      _react2.default.createElement('hr', { className: 'style-two' }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'footer' },
+	        'Copyright © Bishwa Raj Adhikari, 2016.'
+	      )
 	    );
 	  }
 	});
@@ -25358,12 +25386,8 @@
 	        { className: 'chaptersNavigation' },
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'h4',
-	            null,
-	            'अध्याय'
-	          )
+	          { className: 'chapterTitle' },
+	          'अध्याय'
 	        ),
 	        _react2.default.createElement(
 	          'ul',
@@ -25444,7 +25468,7 @@
 
 	var _reactPlayer2 = _interopRequireDefault(_reactPlayer);
 
-	var _reactGa = __webpack_require__(244);
+	var _reactGa = __webpack_require__(243);
 
 	var _reactGa2 = _interopRequireDefault(_reactGa);
 
@@ -25514,15 +25538,13 @@
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'chapterLines' },
+	      _react2.default.createElement('hr', { className: 'style-two' }),
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'chapterLinesTitle' },
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          this.props.title
-	        )
+	        this.props.title
 	      ),
+	      _react2.default.createElement('hr', { className: 'style-two' }),
 	      _react2.default.createElement(
 	        'div',
 	        null,
@@ -27848,8 +27870,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var strictUriEncode = __webpack_require__(242);
-	var objectAssign = __webpack_require__(243);
+	var strictUriEncode = __webpack_require__(186);
+	var objectAssign = __webpack_require__(242);
 
 	function encode(value, opts) {
 		if (opts.encode) {
@@ -27952,18 +27974,6 @@
 /***/ function(module, exports) {
 
 	'use strict';
-	module.exports = function (str) {
-		return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
-			return '%' + c.charCodeAt(0).toString(16).toUpperCase();
-		});
-	};
-
-
-/***/ },
-/* 243 */
-/***/ function(module, exports) {
-
-	'use strict';
 	/* eslint-disable no-unused-vars */
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
@@ -28049,7 +28059,7 @@
 
 
 /***/ },
-/* 244 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28063,12 +28073,12 @@
 	/**
 	 * Utilities
 	 */
-	var format = __webpack_require__(245);
-	var removeLeadingSlash = __webpack_require__(250);
-	var trim = __webpack_require__(248);
+	var format = __webpack_require__(244);
+	var removeLeadingSlash = __webpack_require__(249);
+	var trim = __webpack_require__(247);
 
-	var warn = __webpack_require__(249);
-	var log = __webpack_require__(251);
+	var warn = __webpack_require__(248);
+	var log = __webpack_require__(250);
 
 	var _debug = false;
 	var _titleCase = true;
@@ -28476,7 +28486,7 @@
 	  }
 	};
 
-	var OutboundLink = __webpack_require__(252);
+	var OutboundLink = __webpack_require__(251);
 	OutboundLink.origTrackLink = OutboundLink.trackLink;
 	OutboundLink.trackLink = ReactGA.outboundLink;
 	ReactGA.OutboundLink = OutboundLink;
@@ -28485,12 +28495,12 @@
 
 
 /***/ },
-/* 245 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mightBeEmail = __webpack_require__(246);
-	var toTitleCase = __webpack_require__(247);
-	var warn = __webpack_require__(249);
+	var mightBeEmail = __webpack_require__(245);
+	var toTitleCase = __webpack_require__(246);
+	var warn = __webpack_require__(248);
 
 	var _redacted = 'REDACTED (Potential Email Address)';
 
@@ -28511,7 +28521,7 @@
 
 
 /***/ },
-/* 246 */
+/* 245 */
 /***/ function(module, exports) {
 
 	// See if s could be an email address. We don't want to send personal data like email.
@@ -28525,7 +28535,7 @@
 
 
 /***/ },
-/* 247 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28534,7 +28544,7 @@
 	 * https://github.com/gouch/to-title-case
 	 */
 
-	var trim = __webpack_require__(248);
+	var trim = __webpack_require__(247);
 
 	function toTitleCase(s) {
 	  var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|vs?\.?|via)$/i;
@@ -28562,7 +28572,7 @@
 
 
 /***/ },
-/* 248 */
+/* 247 */
 /***/ function(module, exports) {
 
 	// GA strings need to have leading/trailing whitespace trimmed, and not all
@@ -28576,7 +28586,7 @@
 
 
 /***/ },
-/* 249 */
+/* 248 */
 /***/ function(module, exports) {
 
 	function warn(s) {
@@ -28587,7 +28597,7 @@
 
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports) {
 
 	function removeLeadingSlash(s) {
@@ -28602,7 +28612,7 @@
 
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports) {
 
 	function log(s) {
@@ -28613,11 +28623,11 @@
 
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var assign = __webpack_require__(253);
+	var assign = __webpack_require__(242);
 
 	var NEWTAB = '_blank';
 
@@ -28658,95 +28668,6 @@
 	});
 
 	module.exports = OutboundLink;
-
-
-/***/ },
-/* 253 */
-/***/ function(module, exports) {
-
-	'use strict';
-	/* eslint-disable no-unused-vars */
-	var hasOwnProperty = Object.prototype.hasOwnProperty;
-	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-	function toObject(val) {
-		if (val === null || val === undefined) {
-			throw new TypeError('Object.assign cannot be called with null or undefined');
-		}
-
-		return Object(val);
-	}
-
-	function shouldUseNative() {
-		try {
-			if (!Object.assign) {
-				return false;
-			}
-
-			// Detect buggy property enumeration order in older V8 versions.
-
-			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line
-			test1[5] = 'de';
-			if (Object.getOwnPropertyNames(test1)[0] === '5') {
-				return false;
-			}
-
-			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-			var test2 = {};
-			for (var i = 0; i < 10; i++) {
-				test2['_' + String.fromCharCode(i)] = i;
-			}
-			var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-				return test2[n];
-			});
-			if (order2.join('') !== '0123456789') {
-				return false;
-			}
-
-			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-			var test3 = {};
-			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-				test3[letter] = letter;
-			});
-			if (Object.keys(Object.assign({}, test3)).join('') !==
-					'abcdefghijklmnopqrst') {
-				return false;
-			}
-
-			return true;
-		} catch (e) {
-			// We don't expect any of the above to throw, but better to be safe.
-			return false;
-		}
-	}
-
-	module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-		var from;
-		var to = toObject(target);
-		var symbols;
-
-		for (var s = 1; s < arguments.length; s++) {
-			from = Object(arguments[s]);
-
-			for (var key in from) {
-				if (hasOwnProperty.call(from, key)) {
-					to[key] = from[key];
-				}
-			}
-
-			if (Object.getOwnPropertySymbols) {
-				symbols = Object.getOwnPropertySymbols(from);
-				for (var i = 0; i < symbols.length; i++) {
-					if (propIsEnumerable.call(from, symbols[i])) {
-						to[symbols[i]] = from[symbols[i]];
-					}
-				}
-			}
-		}
-
-		return to;
-	};
 
 
 /***/ }

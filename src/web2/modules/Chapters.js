@@ -10,7 +10,7 @@ export default React.createClass({
     return (
       <div className='chapters'>
         <div className='chaptersNavigation'>
-          <div><h4>अध्याय</h4></div>
+          <div className='chapterTitle'>अध्याय</div>
           <ul className='chaptersLinks'>
             {chapters}
           </ul>

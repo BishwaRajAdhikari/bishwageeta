@@ -10,7 +10,7 @@ export default React.createClass({
           category: 'AudioPlay',
           action:myval.chapter,
           label: myval.line
-        });        
+        });
     }
     function getconfig(){
         return {'autoplay':false};
@@ -24,8 +24,8 @@ export default React.createClass({
             <div className='sanskrit'>
               { item.TextSanskrit }
             </div>
-            <ReactPlayer 
-                url={"/src/imports/AudioNepali/"+_this.props.chapterNumber+"/" +item.audio+".m4a"} 
+            <ReactPlayer
+                url={"/src/imports/AudioNepali/"+_this.props.chapterNumber+"/" +item.audio+".m4a"}
                 playing={false}
                 controls={true}
                 fileConfig={{attributes:{preload:'none'}}}
@@ -42,12 +42,14 @@ export default React.createClass({
         if(texts.length==0){
             return (<div>प्रतीक्षा गर्दै...</div>);
         }else{
-            return texts.map(createItem);       
+            return texts.map(createItem);
         }
     }
     return (
       <div className='chapterLines'>
-        <div className='chapterLinesTitle'><h2>{this.props.title}</h2></div>
+        <hr className='style-two'/>
+        <div className='chapterLinesTitle'>{this.props.title}</div>
+        <hr className='style-two'/>
         <div>{ populateItems(this.props.texts) }</div>
       </div>
     );

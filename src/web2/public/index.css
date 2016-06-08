@@ -1,3 +1,27 @@
+body{
+  margin-left:0;
+  margin-top:0;
+  padding:0;
+  background: #fffaea; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg, #fffaea, #ffdba1); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(-90deg, #fffaea, #ffdba1); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(-90deg, #fffaea, #ffdba1); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(-90deg, #fffaea, #ffdba1); /* Standard syntax */
+}
+
+.title{
+  background-color: black;
+  color: orange;
+  padding: 0 0 0 0;
+  text-align: center;
+  font-size: 50pt;
+}
+.title .subTitle{
+  font-size:25pt;
+  margin:-5;
+  font-variant: small-caps;
+}
+
 .active {
   color: #F57C00;
 }
@@ -24,23 +48,45 @@ ul.chaptersLinks li a {
 ul.chaptersLinks li a.active {
     background-color: #FF9800;
     color: #000000;
+    font-weight:bold;
 }
 
 ul.chaptersLinks li a:hover {
     background-color: #FF9800;
 }
 
-.chaptersNavigation {
-}
 div.chaptersNavigation {
   background-color: #F57C00;
   padding:2px 0px 0px 30px;
   color:#000000;
 }
+.chaptersNavigation .chapterTitle{
+  font-size:20pt;
+  font-weight: bold;
+}
 
 div.chapterLines{
   padding-top:20px;
   padding-left:20px;
+}
+
+div.chapterLinesTitle{
+  text-align:center;
+  font-size:20pt;
+  font-weight: bold;
+  color:#F57C00;
+}
+
+hr.style-two {
+    width:80%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.sharethis {
+  text-align: right;
+  padding-right:10px;
 }
 
 
@@ -57,7 +103,7 @@ blockquote div.sanskrit {
   font-weight:normal;
   font-style: italic;
   font-size: 20px;
-  color: #a0a0a0;
+  color: #F57C00;
 }
 blockquote:before {
 display: block;
@@ -66,7 +112,7 @@ font-size: 80px;
 position: absolute;
 left: -20px;
 top: -20px;
-color: #7a7a7a;
+color: #F57C00;
 }
 blockquote cite {
 color: #999999;
@@ -76,4 +122,16 @@ margin-top: 5px;
 }
 blockquote cite:before {
 content: "\2014 \2009";
+}
+
+.coverpage{
+  text-align:center;
+  margin:20px;
+}
+.coverpage img{
+  border:1px solid black;
+}
+.footer{
+  text-align:center;
+  color:orange;
 }
