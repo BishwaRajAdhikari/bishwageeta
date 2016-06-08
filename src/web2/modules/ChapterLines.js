@@ -1,8 +1,14 @@
 import React from 'react'
-import ReactAudioPlayer from 'react-audio-player'
+import ReactPlayer from 'react-player'
 
 export default React.createClass({
   render: function() {
+    function logPlay(){
+      console.log("ga",ga);        
+    }
+    function getconfig(){
+        return {'autoplay':false};
+    }
     var _this = this;
     var createItem = function(item, index) {
       return (
@@ -12,11 +18,14 @@ export default React.createClass({
             <div className='sanskrit'>
               { item.TextSanskrit }
             </div>
-            <ReactAudioPlayer
-              src= {"/src/imports/AudioNepali/"+_this.props.chapterNumber+"/" +item.audio+".m4a"}
-              autoplay="false"
-              preload='none'
-              width='200'
+            <ReactPlayer 
+                url={"/src/imports/AudioNepali/"+_this.props.chapterNumber+"/" +item.audio+".m4a"} 
+                playing={false}
+                controls={true}
+                fileConfig={{'autoplay':'false','autostart':'false','preload':'none'}}
+                width='500'
+                height='50'
+                onStart={logPlay}
             />
           <cite>अध्याय {_this.props.chapterNumber}, श्लोक {item.audio}</cite>
           </blockquote>
