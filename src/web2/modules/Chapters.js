@@ -5,8 +5,8 @@ import { Sticky } from 'react-sticky'
 export default React.createClass({
   render() {
     var chapters=[];
-    for(var i=0;i<=17;i++){
-      chapters.push(<li key={i}><NavLink to={'/अध्याय/'+i+'/अध्याय%20'+(i+1)}>{(i+1)}</NavLink></li>);
+    for(var i=1;i<=18;i++){
+      chapters.push(<li key={i}><NavLink to={'/अध्याय/'+i+'/अध्याय%20'+i}>{i}</NavLink></li>);
     }
     return (
       <div className='chapters'>

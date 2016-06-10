@@ -26511,14 +26511,14 @@
 	  displayName: 'Chapters',
 	  render: function render() {
 	    var chapters = [];
-	    for (var i = 0; i <= 17; i++) {
+	    for (var i = 1; i <= 18; i++) {
 	      chapters.push(_react2.default.createElement(
 	        'li',
 	        { key: i },
 	        _react2.default.createElement(
 	          _NavLink2.default,
-	          { to: '/अध्याय/' + i + '/अध्याय%20' + (i + 1) },
-	          i + 1
+	          { to: '/अध्याय/' + i + '/अध्याय%20' + i },
+	          i
 	        )
 	      ));
 	    }
@@ -26570,6 +26570,10 @@
 
 	  mixins: [ReactFireMixin],
 
+	  getChapterIndex: function getChapterIndex(propsChapter) {
+	    return (parseInt(propsChapter) - 1).toString();
+	  },
+
 	  getInitialState: function getInitialState() {
 	    return {
 	      texts: []
@@ -26577,14 +26581,14 @@
 	  },
 
 	  componentWillMount: function componentWillMount() {
-	    firebaseRef = firebase.database().ref('bishwageeta/chapters/' + this.props.params.chapterIndex + '/texts');;
+	    firebaseRef = firebase.database().ref('bishwageeta/chapters/' + this.getChapterIndex(this.props.params.chapterIndex) + '/texts');;
 	    this.bindAsArray(firebaseRef, 'texts');
 	  },
 
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    if (this.props.params.chapterIndex === nextProps.params.chapterIndex) return;
+	    if (this.getChapterIndex(this.props.params.chapterIndex) === this.getChapterIndex(nextProps.params.chapterIndex)) return;
 	    this.unbind("texts");
-	    firebaseRef = firebase.database().ref('bishwageeta/chapters/' + nextProps.params.chapterIndex + '/texts');;
+	    firebaseRef = firebase.database().ref('bishwageeta/chapters/' + this.getChapterIndex(nextProps.params.chapterIndex) + '/texts');;
 	    this.bindAsArray(firebaseRef, 'texts');
 	  },
 

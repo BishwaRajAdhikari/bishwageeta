@@ -4,6 +4,10 @@ var firebaseRef=null;
 export default React.createClass({
   mixins: [ReactFireMixin],
 
+  getChapterIndex: function(propsChapter){
+    return (parseInt(propsChapter)-1).toString();
+  },
+
   getInitialState: function() {
     return {
       texts: []
@@ -11,14 +15,14 @@ export default React.createClass({
   },
 
   componentWillMount: function() {
-    firebaseRef = firebase.database().ref('bishwageeta/chapters/'+this.props.params.chapterIndex+'/texts');;
+    firebaseRef = firebase.database().ref('bishwageeta/chapters/'+this.getChapterIndex(this.props.params.chapterIndex)+'/texts');;
     this.bindAsArray(firebaseRef, 'texts');
   },
 
   componentWillReceiveProps: function(nextProps) {
-    if(this.props.params.chapterIndex===nextProps.params.chapterIndex) return;
+    if(this.getChapterIndex(this.props.params.chapterIndex)===this.getChapterIndex(nextProps.params.chapterIndex)) return;
     this.unbind("texts");
-    firebaseRef = firebase.database().ref('bishwageeta/chapters/'+nextProps.params.chapterIndex+'/texts');;
+    firebaseRef = firebase.database().ref('bishwageeta/chapters/'+this.getChapterIndex(nextProps.params.chapterIndex)+'/texts');;
     this.bindAsArray(firebaseRef, 'texts');
   },
 
