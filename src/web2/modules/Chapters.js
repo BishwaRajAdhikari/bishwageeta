@@ -1,5 +1,6 @@
 import React from 'react'
 import NavLink from './NavLink'
+import { Sticky } from 'react-sticky'
 
 export default React.createClass({
   render() {
@@ -9,12 +10,12 @@ export default React.createClass({
     }
     return (
       <div className='chapters'>
-        <div className='chaptersNavigation'>
+        <Sticky className='chaptersNavigation'>
           <div className='chapterTitle'>अध्याय</div>
           <ul className='chaptersLinks'>
             {chapters}
           </ul>
-        </div>
+        </Sticky>
         {this.props.children}
       </div>
     )

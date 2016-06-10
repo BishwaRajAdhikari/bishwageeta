@@ -1,5 +1,6 @@
 import React from 'react'
 import NavLink from './NavLink'
+import { StickyContainer } from 'react-sticky'
 import ga from 'react-ga';
 ga.initialize('UA-78893348-1');
 
@@ -13,7 +14,7 @@ export default React.createClass({
         });
     }
     return (
-      <div>
+      <StickyContainer>
         <div className='title'>
           विश्वगीता
           <div className='subTitle'>Bishwa Geeta</div>
@@ -32,7 +33,7 @@ export default React.createClass({
         <div className='footer'>
           Copyright &copy; Bishwa Raj Adhikari, 2016.
         </div>
-      </div>
+      </StickyContainer>
     )
   }
 })
