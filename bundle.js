@@ -26677,6 +26677,8 @@
 	        return _react2.default.createElement(
 	          'div',
 	          null,
+	          _react2.default.createElement('img', { src: 'loading.gif' }),
+	          _react2.default.createElement('br', null),
 	          'प्रतीक्षा गर्दै...'
 	        );
 	      } else {

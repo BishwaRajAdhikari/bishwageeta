@@ -40,7 +40,7 @@ export default React.createClass({
     };
     var populateItems=function(texts){
         if(texts.length==0){
-            return (<div>प्रतीक्षा गर्दै...</div>);
+            return (<div><img src="loading.gif"/><br/>प्रतीक्षा गर्दै...</div>);
         }else{
             return texts.map(createItem);
         }
