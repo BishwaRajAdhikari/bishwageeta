@@ -8,8 +8,8 @@ export default React.createClass({
     function logPlay(myval){
       ga.event({
           category: 'AudioPlay',
-          action:myval.chapter,
-          label: myval.line
+          action:'Chapter '+myval.chapter,
+          label: 'Line '+myval.line
         });
     }
     function getconfig(){

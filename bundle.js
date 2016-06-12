@@ -26631,8 +26631,8 @@
 	    function logPlay(myval) {
 	      _reactGa2.default.event({
 	        category: 'AudioPlay',
-	        action: myval.chapter,
-	        label: myval.line
+	        action: 'Chapter ' + myval.chapter,
+	        label: 'Line ' + myval.line
 	      });
 	    }
 	    function getconfig() {
