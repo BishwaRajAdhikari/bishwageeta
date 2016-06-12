@@ -26594,7 +26594,7 @@
 
 	  render: function render() {
 	    var _this = this;
-	    return _react2.default.createElement(_ChapterLines2.default, { title: this.props.params.chapterName, chapterNumber: parseInt(this.props.params.chapterIndex) + 1, texts: this.state.texts, audio: "https://www.youtube.com/embed/videoseries?list=PL426831BC08A165DC&test=" + this.props.params.chapterName });
+	    return _react2.default.createElement(_ChapterLines2.default, { title: this.props.params.chapterName, chapterNumber: this.props.params.chapterIndex, texts: this.state.texts, audio: "https://www.youtube.com/embed/videoseries?list=PL426831BC08A165DC&test=" + this.props.params.chapterName });
 	  }
 	});
 
